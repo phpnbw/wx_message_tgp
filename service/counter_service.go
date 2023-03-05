@@ -66,13 +66,13 @@ func CounterHandler(w http.ResponseWriter, r *http.Request) {
 
 func WxTest(w http.ResponseWriter, r *http.Request) {
 	res := &JsonResult{}
+	res.Data = r.Body
+
 	msg, err := json.Marshal(res)
 	if err != nil {
 		fmt.Fprint(w, "内部错误")
 		return
 	}
-
-	res.Data = r.Body
 
 	w.Header().Set("content-type", "application/json")
 	w.Write(msg)
