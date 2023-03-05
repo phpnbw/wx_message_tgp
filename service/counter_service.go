@@ -66,7 +66,7 @@ func CounterHandler(w http.ResponseWriter, r *http.Request) {
 
 func WxTest(w http.ResponseWriter, r *http.Request) {
 	res := &JsonResult{}
-	res.Data = r.Body
+	res.Data = "11111"
 
 	msg, err := json.Marshal(res)
 	if err != nil {
