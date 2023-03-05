@@ -64,6 +64,20 @@ func CounterHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write(msg)
 }
 
+func WxTest(w http.ResponseWriter, r *http.Request) {
+	res := &JsonResult{}
+	msg, err := json.Marshal(res)
+	if err != nil {
+		fmt.Fprint(w, "内部错误")
+		return
+	}
+
+	res.Data = r.Body
+
+	w.Header().Set("content-type", "application/json")
+	w.Write(msg)
+}
+
 // modifyCounter 更新计数，自增或者清零
 func modifyCounter(r *http.Request) (int32, error) {
 	action, err := getAction(r)
